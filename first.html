@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+?    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NZUBO - Discover. Culture. | Luxury Cultural Tourism & Heritage Platform</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cormorant Garamond, Playfair Display & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = { vb                                                                                                                                                                  
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            deepBg: '#071912',
+                            darkGreen: '#0B2319',
+                            emerald: '#113522',
+                            medium: '#1a4830',
+                            gold: '#D4AF37',
+                            goldLight: '#F3E5AB',
+                            goldDark: '#B8860B',
+                            goldAccent: '#E6C86E'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'serif'],
+                        subheading: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Luxury Gold Gradients & Text Styles */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #FFF0B2 0%, #D4AF37 50%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #B8860B 100%);
+        }
+
+        .bg-gold-gradient-hover:hover {
+            background: linear-gradient(135deg, #FFF0B2 0%, #E6C86E 50%, #D4AF37 100%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .glass-panel {
+            background: rgba(11, 35, 25, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .glass-card {
+            background: rgba(17, 53, 34, 0.65);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.7);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Gold Glow and Borders */
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #071912;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #113522;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        /* Tab Animations */
+        .tab-btn.active {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #B8860B 100%);
+            color: #071912;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-brand-deepBg text-gray-200 font-sans antialiased selection:bg-brand-gold selection:text-brand-deepBg flex flex-col min-h-screen">
+
+    <!-- TOP ANNOUNCEMENT / UTILITY BAR -->
+    <div class="bg-brand-darkGreen border-b border-brand-gold/20 py-2 px-4 text-xs text-brand-goldLight flex justify-between items-center max-w-7xl mx-auto w-full z-20">
+        <div class="flex items-center space-x-3">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="hidden sm:inline">Preserving Heritage • Empowering Artisans • Luxury Cultural Expeditions</span>
+            <span class="sm:hidden">Authentic Cultural Journeys</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="tel:+260977000000" class="hover:text-brand-gold transition-colors"><i class="fa-solid fa-phone mr-1.5 text-brand-gold"></i> +260 977 NZUBO</a>
+            <span class="text-brand-gold/30">|</span>
+            <button onclick="toggleWishlistModal()" class="relative hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-heart text-brand-gold"></i>
+                <span>Wishlist</span>
+                <span id="wishlist-badge" class="bg-brand-gold text-brand-deepBg font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-brand-gold/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24">
+                
+                <!-- BRAND LOGO WITH LOGO SVG EMBLEM -->
+                <a href="#" class="flex items-center gap-3.5 group">
+                    <div class="w-12 h-12 rounded-full bg-brand-emerald border border-brand-gold/60 flex items-center justify-center shadow-lg group-hover:border-brand-gold group-hover:scale-105 transition-all duration-300">
+                        <!-- Custom SVG Vector replicating Hut, Sun, Acacia Tree Logo -->
+                        <svg class="w-9 h-9 text-brand-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                            <!-- Acacia Tree -->
+                            <path d="M 25 50 Q 20 40 10 38 Q 20 32 30 35 M 25 50 L 25 65" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M 25 42 Q 35 32 45 35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <!-- Sun -->
+                            <circle cx="68" cy="32" r="14" stroke="currentColor" stroke-width="2.5" fill="none"/>
+                            <!-- Hut Roof & Structure -->
+                            <path d="M 50 35 L 35 58 L 65 58 Z" fill="rgba(212,175,55,0.15)" stroke="currentColor" stroke-width="3"/>
+                            <path d="M 43 38 L 50 28 L 57 38" stroke="currentColor" stroke-width="3"/>
+                            <path d="M 40 58 L 40 68 L 60 68 L 60 58" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M 47 68 A 3 3 0 0 1 53 68 L 53 62 A 3 3 0 0 0 47 62 Z" fill="currentColor"/>
+                            <!-- Waves Base -->
+                            <path d="M 15 72 Q 50 62 85 72" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-gold-gradient block leading-none">NZUBO</span>
+                        <span class="text-[11px] tracking-[0.3em] text-brand-goldLight/90 uppercase font-light block mt-1">Discover. Culture.</span>
+                    </div>
+                </a>
+
+                <!-- DESKTOP NAV LINKS -->
+                <nav class="hidden lg:flex items-center space-x-7 text-xs tracking-wider uppercase font-medium text-gray-300">
+                    <a href="#experiences" class="hover:text-brand-gold transition-colors py-1 border-b-2 border-transparent hover:border-brand-gold">Experiences</a>
+                    <a href="#heritage-map" class="hover:text-brand-gold transition-colors py-1 border-b-2 border-transparent hover:border-brand-gold">Heritage Regions</a>
+                    <a href="#marketplace" class="hover:text-brand-gold transition-colors py-1 border-b-2 border-transparent hover:border-brand-gold">Artisanal Crafts</a>
+                    <a href="#events" class="hover:text-brand-gold transition-colors py-1 border-b-2 border-transparent hover:border-brand-gold">Ceremonies & Events</a>
+                    <a href="#impact" class="hover:text-brand-gold transition-colors py-1 border-b-2 border-transparent hover:border-brand-gold">Our Impact</a>
+                </nav>
+
+                <!-- HEADER ACTIONS -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <button onclick="toggleSearchModal()" class="p-2.5 text-brand-goldLight hover:text-brand-gold hover:bg-brand-emerald/50 rounded-full transition-colors" title="Search Platform">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+                    
+                    <button onclick="openBookingModal('General Inquiry')" class="bg-gold-gradient text-brand-deepBg font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider shadow-lg bg-gold-gradient-hover transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-compass mr-1.5"></i>
+                        <span>Book Journey</span>
+                    </button>
+                </div>
+
+                <!-- MOBILE MENU TOGGLE -->
+                <div class="lg:hidden flex items-center space-x-3">
+                    <button onclick="toggleSearchModal()" class="p-2 text-brand-goldLight">
+                        <i class="fa-solid fa-magnifying-glass text-xl"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="p-2 text-brand-gold text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MOBILE NAV DRAWER -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-brand-darkGreen border-b border-brand-gold/30 px-6 py-6 space-y-4">
+            <a href="#experiences" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-wider text-gray-200 hover:text-brand-gold border-b border-brand-emerald pb-2">Experiences</a>
+            <a href="#heritage-map" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-wider text-gray-200 hover:text-brand-gold border-b border-brand-emerald pb-2">Heritage Regions</a>
+            <a href="#marketplace" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-wider text-gray-200 hover:text-brand-gold border-b border-brand-emerald pb-2">Artisanal Crafts</a>
+            <a href="#events" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-wider text-gray-200 hover:text-brand-gold border-b border-brand-emerald pb-2">Ceremonies & Events</a>
+            <a href="#impact" onclick="toggleMobileMenu()" class="block text-sm uppercase tracking-wider text-gray-200 hover:text-brand-gold border-b border-brand-emerald pb-2">Our Impact</a>
+            <button onclick="toggleMobileMenu(); openBookingModal('General Inquiry');" class="w-full bg-gold-gradient text-brand-deepBg font-bold py-3 rounded-full text-xs uppercase tracking-wider text-center mt-4">
+                Book Cultural Expedition
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH QUICK INQUIRY WIDGET -->
+    <section class="relative min-h-[90vh] flex flex-col justify-center items-center py-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1920&auto=format&fit=crop" alt="African Wilderness & Cultural Landscape" class="w-full h-full object-cover opacity-25 filter brightness-75 scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-deepBg via-brand-deepBg/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-deepBg via-transparent to-brand-deepBg"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center space-y-8">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-panel border border-brand-gold/40 text-brand-goldLight text-xs tracking-widest uppercase font-semibold">
+                <i class="fa-solid fa-sun text-brand-gold"></i>
+                <span>Zambia's Premier Cultural & Tourism Sanctuary</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold text-gray-100 leading-tight">
+                Immerse Yourself In <br>
+                <span class="text-gold-gradient font-italic italic">Authentic Cultural Heritage</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-300 text-sm sm:text-base md:text-lg font-light leading-relaxed">
+                Experience sacred traditional ceremonies, eco-luxury thatched lodges, living history villages, and master artisanal craft workshops guided by indigenous storytellers.
+            </p>
+
+            <!-- QUICK BOOKING / SEARCH WIDGET -->
+            <div class="glass-panel p-4 sm:p-6 rounded-3xl border border-brand-gold/40 shadow-2xl max-w-4xl mx-auto text-left mt-8">
+                <form onsubmit="handleQuickSearch(event)" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-[11px] font-semibold uppercase text-brand-gold mb-1"><i class="fa-solid fa-map-pin mr-1"></i> Category</label>
+                        <select id="hero-category" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-3 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-brand-gold">
+                            <option value="all">All Experiences</option>
+                            <option value="village">Cultural Villages</option>
+                            <option value="culinary">Authentic Dining</option>
+                            <option value="craft">Artisan Workshops</option>
+                            <option value="stay">Heritage Stays</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-semibold uppercase text-brand-gold mb-1"><i class="fa-solid fa-calendar-days mr-1"></i> Travel Date</label>
+                        <input type="date" id="hero-date" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-3 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-brand-gold">
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-semibold uppercase text-brand-gold mb-1"><i class="fa-solid fa-user-group mr-1"></i> Guests</label>
+                        <select id="hero-guests" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-3 py-2.5 text-xs text-gray-200 focus:outline-none focus:border-brand-gold">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="6">6+ Group Expedition</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-end">
+                        <button type="submit" class="w-full bg-gold-gradient text-brand-deepBg font-bold py-2.5 rounded-xl text-xs uppercase tracking-wider bg-gold-gradient-hover transition-all flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Find Journeys</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION SEPARATOR -->
+    <div class="w-full h-1 bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent"></div>
+
+    <!-- FEATURED CULTURAL EXPERIENCES & DESTINATIONS -->
+    <section id="experiences" class="py-20 bg-brand-darkGreen relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase block mb-2">Curated Heritage Encounters</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-100">Featured Cultural Experiences</h2>
+                <div class="w-24 h-1 bg-gold-gradient mx-auto my-4 rounded-full"></div>
+                <p class="text-gray-300 text-sm sm:text-base">Immerse yourself in authentic rituals, folklore storytelling, and artisan crafts with vetted local cultural custodians.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10">
+                <button onclick="filterCards('all')" class="tab-btn active px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider glass-card">All Encounters</button>
+                <button onclick="filterCards('village')" class="tab-btn px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider glass-card text-gray-300">Living Villages</button>
+                <button onclick="filterCards('culinary')" class="tab-btn px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider glass-card text-gray-300">Culinary Feasts</button>
+                <button onclick="filterCards('craft')" class="tab-btn px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider glass-card text-gray-300">Craft Masterclasses</button>
+                <button onclick="filterCards('stay')" class="tab-btn px-5 py-2 rounded-full text-xs font-medium uppercase tracking-wider glass-card text-gray-300">Eco-Luxury Lodges</button>
+            </div>
+
+            <!-- Cards Grid -->
+            <div id="experiences-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Experience 1 -->
+                <div class="card-item village glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=800&auto=format&fit=crop" alt="Mukuni Royal Village" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <button onclick="toggleWishlist(1, 'Mukuni Royal Village Immersive')" class="absolute top-4 right-4 bg-brand-deepBg/80 p-2.5 rounded-full text-brand-gold hover:scale-110 transition-transform">
+                            <i id="fav-icon-1" class="fa-regular fa-heart"></i>
+                        </button>
+                        <span class="absolute bottom-3 left-4 bg-brand-emerald/90 text-brand-goldLight text-[11px] px-3 py-1 rounded-md font-medium">
+                            <i class="fa-solid fa-location-dot mr-1 text-brand-gold"></i> Southern Province, Zambia
+                        </span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-2">
+                                <span class="text-brand-gold font-semibold uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i> 4.9 (128 reviews)</span>
+                                <span class="text-gray-400">Full Day Tour</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Mukuni Royal Village Immersive</h3>
+                            <p class="text-gray-300 text-xs mt-2 line-clamp-3">Experience Toka-Leya royal customs, traditional architecture, meeting council elders, and sacred ancestral shrines.</p>
+                        </div>
+                        <div class="border-t border-brand-gold/20 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase block">Investment</span>
+                                <span class="font-serif text-2xl font-bold text-brand-gold">$85 <span class="text-xs font-sans text-gray-400">/ guest</span></span>
+                            </div>
+                            <button onclick="openBookingModal('Mukuni Royal Village Immersive', 85)" class="bg-gold-gradient text-brand-deepBg font-bold px-4 py-2 rounded-xl text-xs uppercase bg-gold-gradient-hover">
+                                Book Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="card-item culinary glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop" alt="Traditional Nshima Feast" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <button onclick="toggleWishlist(2, 'Authentic Nshima & Culinary Feast')" class="absolute top-4 right-4 bg-brand-deepBg/80 p-2.5 rounded-full text-brand-gold hover:scale-110 transition-transform">
+                            <i id="fav-icon-2" class="fa-regular fa-heart"></i>
+                        </button>
+                        <span class="absolute bottom-3 left-4 bg-brand-emerald/90 text-brand-goldLight text-[11px] px-3 py-1 rounded-md font-medium">
+                            <i class="fa-solid fa-location-dot mr-1 text-brand-gold"></i> Lusaka Heritage Centre
+                        </span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-2">
+                                <span class="text-brand-gold font-semibold uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i> 5.0 (94 reviews)</span>
+                                <span class="text-gray-400">3 Hours</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Authentic Nshima & Culinary Feast</h3>
+                            <p class="text-gray-300 text-xs mt-2 line-clamp-3">Master traditional woodfire cooking. Prepare organic Nshima, village chicken, indigenous greens, and wild fruit desserts.</p>
+                        </div>
+                        <div class="border-t border-brand-gold/20 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase block">Investment</span>
+                                <span class="font-serif text-2xl font-bold text-brand-gold">$50 <span class="text-xs font-sans text-gray-400">/ guest</span></span>
+                            </div>
+                            <button onclick="openBookingModal('Authentic Nshima & Culinary Feast', 50)" class="bg-gold-gradient text-brand-deepBg font-bold px-4 py-2 rounded-xl text-xs uppercase bg-gold-gradient-hover">
+                                Book Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="card-item craft glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?q=80&w=800&auto=format&fit=crop" alt="Clay Pottery Workshop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <button onclick="toggleWishlist(3, 'Master Clay Pottery Workshop')" class="absolute top-4 right-4 bg-brand-deepBg/80 p-2.5 rounded-full text-brand-gold hover:scale-110 transition-transform">
+                            <i id="fav-icon-3" class="fa-regular fa-heart"></i>
+                        </button>
+                        <span class="absolute bottom-3 left-4 bg-brand-emerald/90 text-brand-goldLight text-[11px] px-3 py-1 rounded-md font-medium">
+                            <i class="fa-solid fa-location-dot mr-1 text-brand-gold"></i> Kabwe Craft Collective
+                        </span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-2">
+                                <span class="text-brand-gold font-semibold uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i> 4.8 (76 reviews)</span>
+                                <span class="text-gray-400">2.5 Hours</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Master Clay Pottery Workshop</h3>
+                            <p class="text-gray-300 text-xs mt-2 line-clamp-3">Hand-mold traditional terracotta water pots and ceremonial bowls guided by matriarch pottery masters.</p>
+                        </div>
+                        <div class="border-t border-brand-gold/20 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase block">Investment</span>
+                                <span class="font-serif text-2xl font-bold text-brand-gold">$45 <span class="text-xs font-sans text-gray-400">/ guest</span></span>
+                            </div>
+                            <button onclick="openBookingModal('Master Clay Pottery Workshop', 45)" class="bg-gold-gradient text-brand-deepBg font-bold px-4 py-2 rounded-xl text-xs uppercase bg-gold-gradient-hover">
+                                Book Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="card-item stay glass-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=800&auto=format&fit=crop" alt="The Royal Thatched Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <button onclick="toggleWishlist(4, 'The Royal Thatched Sanctuary')" class="absolute top-4 right-4 bg-brand-deepBg/80 p-2.5 rounded-full text-brand-gold hover:scale-110 transition-transform">
+                            <i id="fav-icon-4" class="fa-regular fa-heart"></i>
+                        </button>
+                        <span class="absolute bottom-3 left-4 bg-brand-emerald/90 text-brand-goldLight text-[11px] px-3 py-1 rounded-md font-medium">
+                            <i class="fa-solid fa-location-dot mr-1 text-brand-gold"></i> Zambezi Riverbank
+                        </span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div>
+                            <div class="flex items-center justify-between text-xs mb-2">
+                                <span class="text-brand-gold font-semibold uppercase tracking-wider"><i class="fa-solid fa-star mr-1"></i> 5.0 (110 reviews)</span>
+                                <span class="text-gray-400">Eco Luxury Lodge</span>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 group-hover:text-brand-gold transition-colors">The Royal Thatched Sanctuary</h3>
+                            <p class="text-gray-300 text-xs mt-2 line-clamp-3">Secluded luxury villas featuring handcrafted teak interiors, private plunge pools, and open-air river views.</p>
+                        </div>
+                        <div class="border-t border-brand-gold/20 pt-4 flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase block">Nightly Rate</span>
+                                <span class="font-serif text-2xl font-bold text-brand-gold">$220 <span class="text-xs font-sans text-gray-400">/ night</span></span>
+                            </div>
+                            <button onclick="openBookingModal('The Royal Thatched Sanctuary', 220)" class="bg-gold-gradient text-brand-deepBg font-bold px-4 py-2 rounded-xl text-xs uppercase bg-gold-gradient-hover">
+                                Reserve Villa
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HERITAGE MAP & REGIONAL EXPLORER -->
+    <section id="heritage-map" class="py-20 bg-brand-deepBg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase block mb-2">Interactive Region Explorer</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-100">Zambia Heritage Map</h2>
+                <div class="w-24 h-1 bg-gold-gradient mx-auto my-4 rounded-full"></div>
+                <p class="text-gray-300 text-sm sm:text-base">Select a province to explore unique cultural ceremonies, traditional craft specialties, and sacred historical centers.</p>
+            </div>
+
+            <!-- Regional Map Interface -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                
+                <!-- Region Selector Tabs -->
+                <div class="space-y-3">
+                    <button onclick="selectRegion('southern')" class="region-btn active w-full text-left p-5 rounded-2xl glass-card border border-brand-gold/30 hover:border-brand-gold transition-all flex items-center justify-between">
+                        <div>
+                            <h4 class="font-serif text-xl font-bold text-brand-gold">Southern Province</h4>
+                            <p class="text-xs text-gray-300 mt-1">Victoria Falls, Toka-Leya Heritage & Mukuni Village</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-brand-gold"></i>
+                    </button>
+
+                    <button onclick="selectRegion('lusaka')" class="region-btn w-full text-left p-5 rounded-2xl glass-card border border-brand-gold/30 hover:border-brand-gold transition-all flex items-center justify-between">
+                        <div>
+                            <h4 class="font-serif text-xl font-bold text-gray-100">Lusaka Province</h4>
+                            <p class="text-xs text-gray-300 mt-1">National Museums, Culinary Feasts & Contemporary Art</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-500"></i>
+                    </button>
+
+                    <button onclick="selectRegion('eastern')" class="region-btn w-full text-left p-5 rounded-2xl glass-card border border-brand-gold/30 hover:border-brand-gold transition-all flex items-center justify-between">
+                        <div>
+                            <h4 class="font-serif text-xl font-bold text-gray-100">Eastern Province</h4>
+                            <p class="text-xs text-gray-300 mt-1">Nc'wala Ceremony, Ngoni Warriors & South Luangwa</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-500"></i>
+                    </button>
+
+                    <button onclick="selectRegion('western')" class="region-btn w-full text-left p-5 rounded-2xl glass-card border border-brand-gold/30 hover:border-brand-gold transition-all flex items-center justify-between">
+                        <div>
+                            <h4 class="font-serif text-xl font-bold text-gray-100">Western Province</h4>
+                            <p class="text-xs text-gray-300 mt-1">Kuomboka Royal Water Ceremony & Lozi Kingdom</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-gray-500"></i>
+                    </button>
+                </div>
+
+                <!-- Region Interactive Display Box -->
+                <div class="lg:col-span-2 glass-panel p-8 rounded-3xl border border-brand-gold/40 relative min-h-[380px] flex flex-col justify-between">
+                    <div id="region-display">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-md uppercase border border-brand-gold/30">Highlight Region</span>
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Livingstone & Zambezi Valley</span>
+                        </div>
+
+                        <h3 class="font-serif text-3xl font-bold text-gold-gradient mb-3">Southern Province Heritage Highlights</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                            Home to the legendary Victoria Falls (*Mosi-oa-Tunya*), this region features rich Toka-Leya royal history, living craft villages, traditional woodcarvings, and sacred rainmaking shrines dating back centuries.
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-4 border-t border-brand-gold/20 pt-4">
+                            <div>
+                                <span class="text-[11px] text-brand-gold uppercase font-bold block">Key Ceremony</span>
+                                <p class="text-xs text-gray-200 mt-0.5">Lwiindi Gonde Rainmaking Festival</p>
+                            </div>
+                            <div>
+                                <span class="text-[11px] text-brand-gold uppercase font-bold block">Artisanal Craft</span>
+                                <p class="text-xs text-gray-200 mt-0.5">Tonga Palm Fiber Basketry</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button onclick="openBookingModal('Southern Province Regional Tour', 120)" class="bg-gold-gradient text-brand-deepBg font-bold px-6 py-3 rounded-xl text-xs uppercase bg-gold-gradient-hover flex items-center gap-2">
+                            <span>Plan Regional Expedition</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTISAN MARKETPLACE & ARTIFACTS GALLERY -->
+    <section id="marketplace" class="py-20 bg-brand-darkGreen relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase block mb-2">Fair Trade & Sustainable Empowerment</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-100">Artisanal Craft Marketplace</h2>
+                <div class="w-24 h-1 bg-gold-gradient mx-auto my-4 rounded-full"></div>
+                <p class="text-gray-300 text-sm sm:text-base">Every item is handmade by certified master artisans, preserving heritage while providing sustainable livelihoods to local communities.</p>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Product 1 -->
+                <div class="glass-card rounded-3xl p-4 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-60 rounded-2xl overflow-hidden mb-4 bg-brand-deepBg">
+                            <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=600&auto=format&fit=crop" alt="Handcarved Wooden Mask" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 left-3 bg-brand-deepBg/90 text-brand-gold text-[10px] uppercase font-bold px-2.5 py-1 rounded-md border border-brand-gold/30">Carved Teak</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Royal Ceremonial Wood Mask</h4>
+                        <p class="text-xs text-gray-400 mt-1">Crafted by Master Musonda, Copperbelt</p>
+                    </div>
+                    <div class="mt-4 border-t border-brand-gold/20 pt-3 flex items-center justify-between">
+                        <span class="font-serif text-xl font-bold text-brand-gold">$120</span>
+                        <button onclick="openCraftModal('Royal Ceremonial Wood Mask', '$120', 'Carved Teakwood', 'Master Musonda', 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?q=80&w=600&auto=format&fit=crop')" class="bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all">
+                            View Craft
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="glass-card rounded-3xl p-4 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-60 rounded-2xl overflow-hidden mb-4 bg-brand-deepBg">
+                            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop" alt="Handwoven Tonga Basket" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 left-3 bg-brand-deepBg/90 text-brand-gold text-[10px] uppercase font-bold px-2.5 py-1 rounded-md border border-brand-gold/30">Palm Fiber</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Binga Handwoven Heritage Basket</h4>
+                        <p class="text-xs text-gray-400 mt-1">Woven by Women's Craft Collective</p>
+                    </div>
+                    <div class="mt-4 border-t border-brand-gold/20 pt-3 flex items-center justify-between">
+                        <span class="font-serif text-xl font-bold text-brand-gold">$65</span>
+                        <button onclick="openCraftModal('Binga Handwoven Heritage Basket', '$65', 'Illala Palm Fiber', 'Southern Women Collective', 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600&auto=format&fit=crop')" class="bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all">
+                            View Craft
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="glass-card rounded-3xl p-4 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-60 rounded-2xl overflow-hidden mb-4 bg-brand-deepBg">
+                            <img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=600&auto=format&fit=crop" alt="Bronze Culture Statue" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 left-3 bg-brand-deepBg/90 text-brand-gold text-[10px] uppercase font-bold px-2.5 py-1 rounded-md border border-brand-gold/30">Cast Bronze</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Golden Warrior Bronze Statue</h4>
+                        <p class="text-xs text-gray-400 mt-1">Lost-Wax Bronze, Lusaka Guild</p>
+                    </div>
+                    <div class="mt-4 border-t border-brand-gold/20 pt-3 flex items-center justify-between">
+                        <span class="font-serif text-xl font-bold text-brand-gold">$210</span>
+                        <button onclick="openCraftModal('Golden Warrior Bronze Statue', '$210', 'Bronze & Gold Leaf', 'Lusaka Foundry Guild', 'https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=600&auto=format&fit=crop')" class="bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all">
+                            View Craft
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="glass-card rounded-3xl p-4 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-60 rounded-2xl overflow-hidden mb-4 bg-brand-deepBg">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=600&auto=format&fit=crop" alt="Chitenge Tapestry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-3 left-3 bg-brand-deepBg/90 text-brand-gold text-[10px] uppercase font-bold px-2.5 py-1 rounded-md border border-brand-gold/30">Textile Art</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-gray-100 group-hover:text-brand-gold transition-colors">Heritage Chitenge Tapestry</h4>
+                        <p class="text-xs text-gray-400 mt-1">Hand-Dyed Organic Cotton Fabric</p>
+                    </div>
+                    <div class="mt-4 border-t border-brand-gold/20 pt-3 flex items-center justify-between">
+                        <span class="font-serif text-xl font-bold text-brand-gold">$80</span>
+                        <button onclick="openCraftModal('Heritage Chitenge Tapestry', '$80', 'Organic Dyed Cotton', 'Chitungwiza Dyers', 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=600&auto=format&fit=crop')" class="bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all">
+                            View Craft
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURAL EVENT CALENDAR -->
+    <section id="events" class="py-20 bg-brand-deepBg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase block mb-2">Living Heritage Celebrations</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-100">Traditional Ceremonies & Calendar</h2>
+                <div class="w-24 h-1 bg-gold-gradient mx-auto my-4 rounded-full"></div>
+                <p class="text-gray-300 text-sm sm:text-base">Join sacred tribal festivals, music performances, and seasonal royal ceremonies throughout the calendar year.</p>
+            </div>
+
+            <div class="space-y-4 max-w-4xl mx-auto">
+                
+                <!-- Event 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-all flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-6">
+                        <div class="w-20 h-20 rounded-2xl bg-gold-gradient text-brand-deepBg flex flex-col items-center justify-center font-serif font-bold shrink-0">
+                            <span class="text-2xl leading-none">24</span>
+                            <span class="text-xs uppercase tracking-wider">FEB</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-gold bg-brand-emerald px-2.5 py-0.5 rounded border border-brand-gold/30">Royal Ceremony</span>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 mt-1">Nc'wala Ceremony of the Ngoni People</h3>
+                            <p class="text-xs text-gray-300 mt-1"><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Mutenguleni, Chipata, Eastern Zambia</p>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Nc\'wala Ceremony Tour Package', 150)" class="w-full sm:w-auto bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-6 py-3 rounded-xl text-xs font-bold uppercase transition-all shrink-0">
+                        Join Event
+                    </button>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-all flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-6">
+                        <div class="w-20 h-20 rounded-2xl bg-gold-gradient text-brand-deepBg flex flex-col items-center justify-center font-serif font-bold shrink-0">
+                            <span class="text-2xl leading-none">12</span>
+                            <span class="text-xs uppercase tracking-wider">APR</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-gold bg-brand-emerald px-2.5 py-0.5 rounded border border-brand-gold/30">Royal Water Procession</span>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 mt-1">Kuomboka Royal Water Ceremony</h3>
+                            <p class="text-xs text-gray-300 mt-1"><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Mongu & Lealui, Western Province</p>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('Kuomboka Ceremony Expedition', 180)" class="w-full sm:w-auto bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-6 py-3 rounded-xl text-xs font-bold uppercase transition-all shrink-0">
+                        Join Event
+                    </button>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-brand-gold/20 hover:border-brand-gold transition-all flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-6">
+                        <div class="w-20 h-20 rounded-2xl bg-gold-gradient text-brand-deepBg flex flex-col items-center justify-center font-serif font-bold shrink-0">
+                            <span class="text-2xl leading-none">05</span>
+                            <span class="text-xs uppercase tracking-wider">JUL</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase font-bold text-brand-gold bg-brand-emerald px-2.5 py-0.5 rounded border border-brand-gold/30">Cultural Arts Festival</span>
+                            <h3 class="font-serif text-2xl font-bold text-gray-100 mt-1">Zambian National Drum & Dance Fair</h3>
+                            <p class="text-xs text-gray-300 mt-1"><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Lusaka National Showgrounds</p>
+                        </div>
+                    </div>
+                    <button onclick="openBookingModal('National Dance Fair Pass', 40)" class="w-full sm:w-auto bg-brand-emerald hover:bg-brand-gold hover:text-brand-deepBg text-brand-gold border border-brand-gold/40 px-6 py-3 rounded-xl text-xs font-bold uppercase transition-all shrink-0">
+                        Join Event
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SUSTAINABILITY & COMMUNITY IMPACT -->
+    <section id="impact" class="py-20 bg-brand-darkGreen border-t border-brand-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase block mb-2">Empowerment & Ethics</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-gray-100 leading-tight">Preserving Sacred Traditions, Sustaining Communities</h2>
+                    <div class="w-24 h-1 bg-gold-gradient my-6 rounded-full"></div>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-6">
+                        At NZUBO, cultural tourism is rooted in absolute respect, direct fair-trade compensation, and indigenous heritage stewardship. 85% of all booking revenues directly support local village elders, artisan cooperatives, and youth cultural education funds.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-hand-holding-heart text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-gray-100 text-base">Direct Artisan Revenue Sharing</h4>
+                                <p class="text-xs text-gray-400">Eliminating intermediaries to ensure master craftsmen earn full value for their heritage works.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-brand-gold/20 text-brand-gold flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-tree text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-gray-100 text-base">Sustainable Eco-Building Practices</h4>
+                                <p class="text-xs text-gray-400">Using solar energy, local clay bricks, and eco-thatching that blend harmoniously with natural reserves.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="glass-panel p-4 rounded-3xl border border-brand-gold/40 relative z-10">
+                        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=800&auto=format&fit=crop" alt="Community Heritage Group" class="rounded-2xl w-full h-80 object-cover">
+                        <div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl border border-brand-gold max-w-xs hidden sm:block">
+                            <p class="font-serif text-3xl font-bold text-brand-gold">100%</p>
+                            <p class="text-xs text-gray-300 mt-1 uppercase">Locally Owned & Managed Indigenous Initiative</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-brand-deepBg text-gray-300 pt-16 pb-12 border-t border-brand-gold/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-brand-gold/15">
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-brand-emerald border border-brand-gold/50 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-brand-gold" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                                <path d="M 50 35 L 35 58 L 65 58 Z" stroke="currentColor" stroke-width="4"/>
+                                <circle cx="68" cy="32" r="12" stroke="currentColor" stroke-width="4"/>
+                            </svg>
+                        </div>
+                        <span class="font-serif text-2xl font-bold text-gold-gradient">NZUBO</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Connecting global travelers with Zambia's rich living culture, sacred royal traditions, eco-luxury lodging, and authentic handcrafts.
+                    </p>
+                    <div class="flex space-x-3 text-brand-gold pt-2">
+                        <a href="#" class="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-deepBg transition-colors"><i class="fa-brands fa-instagram text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-deepBg transition-colors"><i class="fa-brands fa-facebook-f text-xs"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-deepBg transition-colors"><i class="fa-brands fa-x-twitter text-xs"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-brand-gold mb-4">Cultural Navigation</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#experiences" class="hover:text-brand-gold transition-colors">Living Village Experiences</a></li>
+                        <li><a href="#heritage-map" class="hover:text-brand-gold transition-colors">Regional Heritage Map</a></li>
+                        <li><a href="#marketplace" class="hover:text-brand-gold transition-colors">Artisan Marketplace</a></li>
+                        <li><a href="#events" class="hover:text-brand-gold transition-colors">Royal Ceremonies Calendar</a></li>
+                        <li><a href="#impact" class="hover:text-brand-gold transition-colors">Sustainable Tourism Impact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-brand-gold mb-4">Sanctuary Contact</h4>
+                    <ul class="space-y-3 text-xs text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-brand-gold mt-0.5"></i>
+                            <span>NZUBO Cultural Centre, Great East Road, Lusaka, Zambia</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-brand-gold"></i>
+                            <span>concierge@nzubo-culture.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-solid fa-phone text-brand-gold"></i>
+                            <span>+260 977 NZUBO (69826)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-serif text-lg font-bold text-brand-gold mb-4">Heritage Dispatch</h4>
+                    <p class="text-xs text-gray-400 mb-3">Receive invitations to private royal ceremonies and artisan spotlights.</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" required placeholder="Enter email address" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-brand-gold">
+                        <button type="submit" class="w-full bg-gold-gradient text-brand-deepBg font-bold py-2 rounded-xl text-xs uppercase bg-gold-gradient-hover">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 NZUBO - Discover. Culture. All Rights Reserved.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-brand-gold">Privacy Policy</a>
+                    <a href="#" class="hover:text-brand-gold">Ethical Culture Tourism Code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOOKING & INQUIRY MODAL -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-deepBg/85 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 border border-brand-gold/50 relative shadow-2xl">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-gray-400 hover:text-brand-gold text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-brand-gold text-xs font-semibold tracking-widest uppercase">Reserve Expedition</span>
+                <h3 id="modal-experience-title" class="font-serif text-2xl font-bold text-gray-100 mt-1">Book Experience</h3>
+            </div>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Lord/Lady Harrington" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-4 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-gold">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Email Address</label>
+                        <input type="email" required placeholder="guest@domain.com" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-4 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">WhatsApp / Phone</label>
+                        <input type="tel" required placeholder="+260..." class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-4 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-gold">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Travel Date</label>
+                        <input type="date" id="booking-date" required class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-4 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-gold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Guest Count</label>
+                        <select id="modal-guest-count" onchange="calculateModalTotal()" class="w-full bg-brand-darkGreen border border-brand-gold/30 rounded-xl px-4 py-2.5 text-xs text-gray-100 focus:outline-none focus:border-brand-gold">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="6">6+ Group</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="modal-price-box" class="bg-brand-emerald/40 p-3 rounded-xl border border-brand-gold/20 flex justify-between items-center text-xs">
+                    <span class="text-gray-300">Total Investment:</span>
+                    <span id="modal-calculated-total" class="font-serif text-lg font-bold text-brand-gold">$170</span>
+                </div>
+
+                <button type="submit" class="w-full bg-gold-gradient text-brand-deepBg font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider bg-gold-gradient-hover shadow-lg transition-all">
+                    Confirm Reservation Inquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ARTISANAL CRAFT DETAILS LIGHTBOX MODAL -->
+    <div id="craft-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-deepBg/85 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 border border-brand-gold/50 relative shadow-2xl flex flex-col md:flex-row gap-6">
+            <button onclick="closeCraftModal()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-gold text-xl z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="md:w-1/2 h-64 md:h-auto rounded-2xl overflow-hidden bg-brand-darkGreen">
+                <img id="craft-modal-img" src="" alt="Craft Artifact" class="w-full h-full object-cover">
+            </div>
+
+            <div class="md:w-1/2 flex flex-col justify-between space-y-4">
+                <div>
+                    <span id="craft-modal-material" class="text-[10px] font-bold text-brand-gold uppercase tracking-widest block mb-1">Handcrafted Material</span>
+                    <h3 id="craft-modal-title" class="font-serif text-2xl font-bold text-gray-100">Artifact Title</h3>
+                    <p id="craft-modal-artisan" class="text-xs text-gray-400 mt-1">Master Artisan Guild</p>
+                    <p class="text-xs text-gray-300 mt-4 leading-relaxed">Included with physical certificate of cultural authenticity and direct fair-trade provenance token.</p>
+                </div>
+
+                <div class="border-t border-brand-gold/20 pt-4 flex items-center justify-between">
+                    <span id="craft-modal-price" class="font-serif text-2xl font-bold text-brand-gold">$0</span>
+                    <button onclick="orderCraftItem()" class="bg-gold-gradient text-brand-deepBg font-bold px-5 py-2.5 rounded-xl text-xs uppercase bg-gold-gradient-hover">
+                        Inquire / Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WISHLIST MODAL -->
+    <div id="wishlist-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-brand-deepBg/85 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-md rounded-3xl p-6 border border-brand-gold/50 relative shadow-2xl">
+            <button onclick="toggleWishlistModal()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-gold text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-heart text-brand-gold text-2xl mb-2"></i>
+                <h3 class="font-serif text-2xl font-bold text-gray-100">Your Saved Cultural Wishlist</h3>
+            </div>
+
+            <div id="wishlist-items-list" class="space-y-3 max-h-60 overflow-y-auto text-xs">
+                <p class="text-gray-400 italic text-center">No saved items in your cultural wishlist yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div id="search-modal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-20 px-4 bg-brand-deepBg/85 backdrop-blur-md">
+        <div class="glass-panel w-full max-w-2xl rounded-2xl p-6 border border-brand-gold/40 shadow-2xl relative">
+            <button onclick="toggleSearchModal()" class="absolute top-4 right-4 text-gray-400 hover:text-brand-gold">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="flex items-center gap-3 border-b border-brand-gold/30 pb-3">
+                <i class="fa-solid fa-magnifying-glass text-brand-gold text-lg"></i>
+                <input type="text" id="search-input" onkeyup="performSearch()" placeholder="Search living villages, craft workshops, ceremonies, or stays..." class="w-full bg-transparent text-gray-100 placeholder-gray-400 focus:outline-none text-sm">
+            </div>
+            <div id="search-results" class="mt-4 max-h-60 overflow-y-auto space-y-2 text-xs">
+                <p class="text-gray-500 italic">Start typing to search across NZUBO platform...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast-notification" class="fixed bottom-6 right-6 z-50 hidden glass-panel border border-brand-gold px-5 py-4 rounded-2xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+        <div>
+            <p id="toast-title" class="font-bold text-xs text-gray-100">Action Confirmed</p>
+            <p id="toast-msg" class="text-[11px] text-gray-300">Your request has been saved.</p>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // App State
+        let currentUnitPrice = 85;
+        let activeExperience = "Cultural Encounter";
+        let wishlist = JSON.parse(localStorage.getItem('nzubo_wishlist')) || [];
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            updateWishlistBadge();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            if (document.getElementById('booking-date')) {
+                document.getElementById('booking-date').value = tomorrow.toISOString().split('T')[0];
+            }
+        });
+
+        // Toggle Mobile Navigation Menu
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Toggle Search Modal
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if(!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+            }
+        }
+
+        // Quick Search Hero Form
+        function handleQuickSearch(e) {
+            e.preventDefault();
+            const category = document.getElementById('hero-category').value;
+            filterCards(category);
+            document.getElementById('experiences').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Filter Cards Logic
+        function filterCards(category) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => btn.classList.remove('active', 'text-brand-deepBg'));
+
+            if(event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            }
+
+            const cards = document.querySelectorAll('.card-item');
+            cards.forEach(card => {
+                if(category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Regional Explorer Tab Handler
+        const regionData = {
+            southern: {
+                title: "Southern Province Heritage Highlights",
+                location: "Livingstone & Zambezi Valley",
+                desc: "Home to the Victoria Falls (*Mosi-oa-Tunya*), features Toka-Leya royal history, living craft villages, traditional woodcarvings, and sacred rainmaking shrines.",
+                ceremony: "Lwiindi Gonde Rainmaking Festival",
+                craft: "Tonga Palm Fiber Basketry"
+            },
+            lusaka: {
+                title: "Lusaka Cultural & Art Capital",
+                location: "Metropolitan & Heritage Sites",
+                desc: "Zambia's vibrant capital featuring the Lusaka National Museum, contemporary African art galleries, and authentic indigenous culinary dining experiences.",
+                ceremony: "National Arts & Heritage Jubilee",
+                craft: "Lost-Wax Bronze Sculpture"
+            },
+            eastern: {
+                title: "Eastern Province Warrior Traditions",
+                location: "Chipata & Luangwa Valley",
+                desc: "Land of the warrior Ngoni people. Renowned for dramatic war dances, royal leopard skin regalia, and wilderness cultural sanctuaries.",
+                ceremony: "Nc'wala First Fruits Harvest Ceremony",
+                craft: "Bearded Wood & Animal Carvings"
+            },
+            western: {
+                title: "Western Province Barotse Kingdom",
+                location: "Mongu & Zambezi Floodplains",
+                desc: "The ancient Lozi Kingdom famous for the Kuomboka royal barge procession, traditional royal drums, and intricate reed mat weaving.",
+                ceremony: "Kuomboka Royal Water Procession",
+                craft: "Barotse Royal Reed Mats"
+            }
+        };
+
+        function selectRegion(regionKey) {
+            const btns = document.querySelectorAll('.region-btn');
+            btns.forEach(b => {
+                b.classList.remove('border-brand-gold');
+                b.querySelector('h4').classList.remove('text-brand-gold');
+            });
+
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('border-brand-gold');
+                event.currentTarget.querySelector('h4').classList.add('text-brand-gold');
+            }
+
+            const data = regionData[regionKey];
+            document.getElementById('region-display').innerHTML = `
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="px-3 py-1 bg-brand-gold/20 text-brand-gold text-xs font-bold rounded-md uppercase border border-brand-gold/30">Highlight Region</span>
+                    <span class="text-xs text-gray-400"><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> ${data.location}</span>
+                </div>
+                <h3 class="font-serif text-3xl font-bold text-gold-gradient mb-3">${data.title}</h3>
+                <p class="text-gray-300 text-sm leading-relaxed mb-6">${data.desc}</p>
+                <div class="grid grid-cols-2 gap-4 border-t border-brand-gold/20 pt-4">
+                    <div>
+                        <span class="text-[11px] text-brand-gold uppercase font-bold block">Key Ceremony</span>
+                        <p class="text-xs text-gray-200 mt-0.5">${data.ceremony}</p>
+                    </div>
+                    <div>
+                        <span class="text-[11px] text-brand-gold uppercase font-bold block">Artisanal Craft</span>
+                        <p class="text-xs text-gray-200 mt-0.5">${data.craft}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Booking Modal Logic
+        function openBookingModal(title, price = 85) {
+            activeExperience = title;
+            currentUnitPrice = price;
+            document.getElementById('modal-experience-title').innerText = title;
+            document.getElementById('booking-modal').classList.remove('hidden');
+            calculateModalTotal();
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function calculateModalTotal() {
+            const guests = parseInt(document.getElementById('modal-guest-count').value) || 1;
+            const total = currentUnitPrice * guests;
+            document.getElementById('modal-calculated-total').innerText = `$${total}`;
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            closeBookingModal();
+            showToast("Expedition Reserved", `Your reservation inquiry for "${activeExperience}" has been recorded. Our concierge will contact you.`);
+        }
+
+        // Craft Lightbox Modal
+        let activeCraft = "";
+        function openCraftModal(title, price, material, artisan, imgSrc) {
+            activeCraft = title;
+            document.getElementById('craft-modal-title').innerText = title;
+            document.getElementById('craft-modal-price').innerText = price;
+            document.getElementById('craft-modal-material').innerText = material;
+            document.getElementById('craft-modal-artisan').innerText = artisan;
+            document.getElementById('craft-modal-img').src = imgSrc;
+            document.getElementById('craft-modal').classList.remove('hidden');
+        }
+
+        function closeCraftModal() {
+            document.getElementById('craft-modal').classList.add('hidden');
+        }
+
+        function orderCraftItem() {
+            closeCraftModal();
+            showToast("Craft Order Inquired", `Thank you for supporting sustainable artisans. We have registered your inquiry for "${activeCraft}".`);
+        }
+
+        // Wishlist Logic with LocalStorage
+        function toggleWishlist(id, name) {
+            const index = wishlist.findIndex(item => item.id === id);
+            const icon = document.getElementById(`fav-icon-${id}`);
+
+            if(index > -1) {
+                wishlist.splice(index, 1);
+                if(icon) icon.className = "fa-regular fa-heart";
+                showToast("Wishlist Updated", `Removed "${name}" from your saved journeys.`);
+            } else {
+                wishlist.push({ id, name });
+                if(icon) icon.className = "fa-solid fa-heart text-brand-gold";
+                showToast("Saved to Wishlist", `Added "${name}" to your cultural wishlist.`);
+            }
+
+            localStorage.setItem('nzubo_wishlist', JSON.stringify(wishlist));
+            updateWishlistBadge();
+        }
+
+        function updateWishlistBadge() {
+            document.getElementById('wishlist-badge').innerText = wishlist.length;
+        }
+
+        function toggleWishlistModal() {
+            const modal = document.getElementById('wishlist-modal');
+            const list = document.getElementById('wishlist-items-list');
+            modal.classList.toggle('hidden');
+
+            if(!modal.classList.contains('hidden')) {
+                if(wishlist.length === 0) {
+                    list.innerHTML = `<p class="text-gray-400 italic text-center">No saved items in your cultural wishlist yet.</p>`;
+                } else {
+                    list.innerHTML = wishlist.map(item => `
+                        <div class="p-3 bg-brand-darkGreen rounded-xl flex justify-between items-center border border-brand-gold/20">
+                            <span class="font-bold text-brand-goldLight">${item.name}</span>
+                            <button onclick="toggleWishlist(${item.id}, '${item.name}'); toggleWishlistModal();" class="text-gray-400 hover:text-red-400">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        // Search Filter Engine
+        function performSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const container = document.getElementById('search-results');
+
+            if(!query.trim()) {
+                container.innerHTML = `<p class="text-gray-500 italic">Start typing to search across NZUBO platform...</p>`;
+                return;
+            }
+
+            const items = [
+                { title: 'Mukuni Royal Village Immersive', cat: 'Living Village' },
+                { title: 'Authentic Nshima & Culinary Feast', cat: 'Dining' },
+                { title: 'Master Clay Pottery Workshop', cat: 'Artisan Workshop' },
+                { title: 'The Royal Thatched Sanctuary', cat: 'Eco Lodge' },
+                { title: 'Nc\'wala Ceremony of the Ngoni', cat: 'Royal Event' },
+                { title: 'Kuomboka Royal Water Procession', cat: 'Royal Event' }
+            ];
+
+            const matches = items.filter(i => i.title.toLowerCase().includes(query) || i.cat.toLowerCase().includes(query));
+
+            if(matches.length === 0) {
+                container.innerHTML = `<p class="text-gray-400">No cultural experiences matched your query.</p>`;
+            } else {
+                container.innerHTML = matches.map(m => `
+                    <div class="p-2 hover:bg-brand-emerald rounded-lg flex justify-between items-center cursor-pointer" onclick="toggleSearchModal(); openBookingModal('${m.title}', 85)">
+                        <span class="font-bold text-brand-goldLight">${m.title}</span>
+                        <span class="text-[10px] text-brand-gold uppercase">${m.cat}</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Newsletter Form Handler
+        function handleNewsletter(e) {
+            e.preventDefault();
+            e.target.reset();
+            showToast("Subscribed to NZUBO", "Welcome! You will receive monthly invitations to traditional ceremonies.");
+        }
+
+        // Toast Notification System
+        function showToast(title, msg) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
